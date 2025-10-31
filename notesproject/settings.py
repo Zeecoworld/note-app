@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=b-83*ko=1h7cpm*i06kg(7zxek0om9_)x8^8pa*&8^)gi^v7_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["note-app-xsx5.onrender.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -70,6 +70,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'notesproject.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.SessionAuthentication',  # for web-browsable API
+        # 'rest_framework.authentication.TokenAuthentication',    # for API clients
+        'rest_framework_simplejwt.authentication.JWTAuthentication' #for JWT
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # require login by default
+    ],
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
